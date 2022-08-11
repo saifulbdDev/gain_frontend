@@ -17,8 +17,8 @@ const Product = ({ sortingProducts, pageSize }) => {
               phone_details,
             } = data;
             return (
-            <tr key={_id} className="pb-4">
-              <td className="d-flex align-items-center ">
+            <tr key={_id} >
+              <td className="d-flex align-items-center td-margin">
                 <div className="me-4">
                   <img
                     src={

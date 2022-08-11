@@ -20,7 +20,7 @@ const PieChart = ({ chatData=[] }) => {
     ProductFilter("Bikroy.com").length;
 
   const options = {
-    responsive: true,
+    
     plugins: {
       legend: {
         position: "right",
@@ -30,12 +30,9 @@ const PieChart = ({ chatData=[] }) => {
         display: false,
         text: "Condition",
       },
-      chartArea: {
-        top: 0,
-        left: 0,
-      
-      },
+     
     },
+   
   };
 
   const data = {
@@ -47,6 +44,7 @@ const PieChart = ({ chatData=[] }) => {
     datasets: [
       {
         label: "# of Votes",
+       
         data: [
           (total / 100) * ProductFilter("Daraz").length,
           (total / 100) * ProductFilter("Bikroy.com").length,
@@ -61,6 +59,6 @@ const PieChart = ({ chatData=[] }) => {
       },
     ],
   };
-  return <Pie options={options} data={data} />;
+  return <Pie options={options} data={data} height={300} width={280} />;
 };
 export default PieChart;

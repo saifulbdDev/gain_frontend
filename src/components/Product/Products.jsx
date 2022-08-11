@@ -1,23 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { productsSort } from "../../utils/productsSort";
-import useInfiniteScroll from "../../hooks/useInfiniteScroll";
+import InfiniteScroll from "../useInfiniteScroll";
 import Product from "./ProductBody";
 
 const Products = ({ storeData }) => {
   const [sortingProducts, setSortingProducts] = useState([]);
-  const [page, setPage] = useState(20);
-  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);
+  let [page, setPage] = useState(20);
 
-  function fetchMoreListItems() {
-    if (page <= sortingProducts.length) {
-      console.log(sortingProducts.length)
-      setPage((prev) => prev + 20);
-      setIsFetching(false);
-      console.log(page)
-    
-    }
-  }
-  console.log(page)
+  const fetchMore = useCallback(() => {
+    setPage((prev) => prev + 20);
+  }, []);
 
   useEffect(() => {
     setSortingProducts(storeData);
@@ -27,11 +19,12 @@ const Products = ({ storeData }) => {
     const sortData = productsSort(e.target.value, storeData);
     setSortingProducts(sortData);
   };
-
+console.log(sortingProducts.length > page)
   return (
     <>
       <div className="product-header">
         <h3>All Products</h3>
+
         <div className="d-flex align-items-center">
           <div className="me-2">Sort by:</div>
           <div>
@@ -48,18 +41,24 @@ const Products = ({ storeData }) => {
           </div>
         </div>
       </div>
-      <table id="table" className="table table-borderless">
+      <table className="table table-borderless">
         <thead>
           <tr>
-            <th>Model Name</th>
-            <th>Ram/Rom</th>
-            <th>Tag</th>
-            <th>Price</th>
+            <th width="" className="td-padding">Model Name {page}</th>
+            <th width="20%" className="td-padding">Ram/Rom</th>
+            <th width="" className="td-padding">Tag</th>
+            <th width="" className="td-padding">Price</th>
           </tr>
         </thead>
 
         <Product sortingProducts={sortingProducts} pageSize={page} />
       </table>
+
+      {sortingProducts.length > page ? (
+        <InfiniteScroll fetchMore={fetchMore} />
+      ) : (
+        ""
+      )}
     </>
   );
 };

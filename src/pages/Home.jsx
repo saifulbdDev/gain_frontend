@@ -1,26 +1,26 @@
-import {  useState } from "react";
-import { NotificationManager} from 'react-notifications';
+import { useState } from "react";
+import { NotificationManager } from "react-notifications";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modals/AddProduct";
 import BarChart from "../components/Charts/BarChart";
 import PieChart from "../components/Charts/PieChart";
 import Products from "../components/Product/Products";
 import data from "../Data/data.1659939065";
-import {  newPro } from "../utils/newPro";
+import { newPro } from "../utils/newPro";
 function Home() {
   const [storeData, setStoreData] = useState(data);
 
   const [showModal, setModal] = useState(false);
 
   const addProduct = (childdata) => {
-   const newProduct = newPro(childdata)
+    const newProduct = newPro(childdata);
 
-  
-
-    setStoreData([...storeData, newProduct])
-    NotificationManager.success(`Product Name: ${newProduct.phone_title}`, 'Product added successfully');
+    setStoreData([...storeData, newProduct]);
+    NotificationManager.success(
+      `Product Name: ${newProduct.phone_title}`,
+      "Product added successfully"
+    );
   };
-
 
   return (
     <>
@@ -29,25 +29,36 @@ function Home() {
         <Navbar onHide={() => setModal(true)} />
       </header>
       {/* product section */}
-      <section className="product-section">
+      <section className="myChart-section">
         <div className="container">
           {storeData && storeData ? (
             <div className="row my-4">
               {" "}
-              <div className="col-md-6">
-                <span className="barChart">Condition</span>
-                <PieChart chatData={storeData} />
+              <div className="col-md-5">
+                <div className="myChartDiv">
+                  <h3 className="myChartDiv-title">Sourse</h3>
+                  <div className="card-body mt-3">
+                    <PieChart chatData={storeData} />
+                  </div>
+                </div>
               </div>
-              <div className="col-md-6  mt-5">
-                <span className="barChart">Sourse</span>
-                <BarChart chatData={storeData} />
+              <div className="col-md-7  ">
+                <div className="myChartDiv">
+                  <h3 className="myChartDiv-title">Condition</h3>
+                  <div className="card-body mt-3">
+                    <BarChart chatData={storeData} />
+                  </div>
+                </div>
               </div>
             </div>
           ) : (
             ""
           )}
-
-          <Products storeData={storeData}  />
+        </div>
+      </section>
+      <section className="product-section" id="product">
+        <div className="container">
+          <Products storeData={storeData} />
         </div>
       </section>
       {showModal ? (

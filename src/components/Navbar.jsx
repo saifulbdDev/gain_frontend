@@ -37,7 +37,7 @@ export default function Navbar({ onHide }) {
             <button
               type="button"
               onClick={onHide}
-              className="btn ml-2 bg-light rounded-0 text-primary"
+              className="btn ml-2 btn-theme "
            
             >
               Add Product

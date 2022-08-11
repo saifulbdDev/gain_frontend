@@ -41,7 +41,7 @@ const BarChart = ({chatData}) => {
     plugins: {
       
       legend: {
-        position: 'top',
+      
         display: false,
       },
       title: {
@@ -79,7 +79,7 @@ const BarChart = ({chatData}) => {
   };
   return (
   
-    <Bar data={data} options={options}  />
+    <Bar data={data} options={options}  height={300} />
   )
 }
 
