@@ -197,6 +197,13 @@ input[type="number"]::-webkit-outer-spin-button {
     max-width: 100%;
   }
 }
+.serach-div{
+  margin: 100px auto;
+  text-align: center;
+}
+.serach-div h2{
+  color: red;
+}
 @media (max-width: 767px) {
   .product{
    overflow-y: auto;

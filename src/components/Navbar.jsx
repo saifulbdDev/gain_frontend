@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Navbar({ onHide }) {
+export default function Navbar({ onHide, setSearch }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light ">
       <div className="container">
@@ -23,7 +23,7 @@ export default function Navbar({ onHide }) {
           <div className="navbar-nav ml-auto">
             <div className="search-div">
               <input
-                // onChange={({ target }) => setSearch(target.value)}
+                onChange={({ target }) => setSearch(target.value)}
                 type="text"
                 className="search-form"
                 placeholder="Search by Title or Brand"
