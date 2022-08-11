@@ -4,8 +4,7 @@ import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieChart = ({ chatData=[] }) => {
-
+const PieChart = ({ chatData = [] }) => {
   const ProductFilter = (value) => {
     if (value === "Bikroy.com") {
       return chatData.filter((item) => item.ad_category === value);
@@ -20,19 +19,15 @@ const PieChart = ({ chatData=[] }) => {
     ProductFilter("Bikroy.com").length;
 
   const options = {
-    
     plugins: {
       legend: {
         position: "right",
-      
       },
       title: {
         display: false,
         text: "Condition",
       },
-     
     },
-   
   };
 
   const data = {
@@ -44,7 +39,6 @@ const PieChart = ({ chatData=[] }) => {
     datasets: [
       {
         label: "# of Votes",
-       
         data: [
           (total / 100) * ProductFilter("Daraz").length,
           (total / 100) * ProductFilter("Bikroy.com").length,

@@ -8,7 +8,6 @@ const Products = ({ storeData }) => {
   let [page, setPage] = useState(20);
 
   const fetchMore = useCallback(() => {
- 
     setPage((prev) => prev + 20);
   }, []);
 
@@ -20,7 +19,7 @@ const Products = ({ storeData }) => {
     const sortData = productsSort(e.target.value, storeData);
     setSortingProducts(sortData);
   };
-console.log(page)
+
   return (
     <>
       <div className="product-header">
@@ -42,26 +41,25 @@ console.log(page)
           </div>
         </div>
       </div>
-      <div className="product" >
-      <table className="table table-borderless">
-        <thead>
-          <tr>
-            <th className="td-padding">Model Name {page}</th>
-            <th className="td-padding">Ram/Rom</th>
-            <th className="td-padding">Tag</th>
-            <th className="td-padding">Price</th>
-          </tr>
-        </thead>
+      <div className="product">
+        <table className="table table-borderless">
+          <thead>
+            <tr>
+              <th className="td-padding">Model Name {page}</th>
+              <th className="td-padding">Ram/Rom</th>
+              <th className="td-padding">Tag</th>
+              <th className="td-padding">Price</th>
+            </tr>
+          </thead>
 
-        <Product sortingProducts={sortingProducts} pageSize={page} />
-      </table>
+          <Product sortingProducts={sortingProducts} pageSize={page} />
+        </table>
       </div>
       {sortingProducts.length > page ? (
         <InfiniteScroll fetchMore={fetchMore} />
       ) : (
         ""
       )}
-
     </>
   );
 };

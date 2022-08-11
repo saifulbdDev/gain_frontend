@@ -22,21 +22,22 @@ function Home() {
     );
   };
   const isSticky = () => {
-    const header = document.querySelector('.header');
+    const header = document.querySelector(".header");
     const scrollTop = window.scrollY;
-    scrollTop >= 50 ? header.classList.add('is-sticky') : header.classList.remove('is-sticky');
-};
+    scrollTop >= 50
+      ? header.classList.add("is-sticky")
+      : header.classList.remove("is-sticky");
+  };
   useEffect(() => {
-    window.addEventListener('scroll', isSticky);
-   
-},[]);
+    window.addEventListener("scroll", isSticky);
+  }, []);
   return (
     <>
       {/* Navbar */}
       <header className="header">
         <Navbar onHide={() => setModal(true)} />
       </header>
-      {/* product section */}
+      {/* Chart section */}
       <section className="myChart-section">
         <div className="container">
           {storeData && storeData ? (
@@ -64,6 +65,8 @@ function Home() {
           )}
         </div>
       </section>
+
+      {/* product section */}
       <section className="product-section" id="product">
         <div className="container">
           <Products storeData={storeData} />

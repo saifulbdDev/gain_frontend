@@ -15,7 +15,7 @@ const InfiniteScroll = ({ fetchMore }) => {
 
     if (isBottom(wrappedElement)) {
       // clearTimeout
-      console.log('jjj')
+    
       setLoader(true);
        setTimeout(() => {
         setLoader(false);
