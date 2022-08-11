@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NotificationManager } from "react-notifications";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modals/AddProduct";
@@ -21,7 +21,15 @@ function Home() {
       "Product added successfully"
     );
   };
-
+  const isSticky = () => {
+    const header = document.querySelector('.header');
+    const scrollTop = window.scrollY;
+    scrollTop >= 50 ? header.classList.add('is-sticky') : header.classList.remove('is-sticky');
+};
+  useEffect(() => {
+    window.addEventListener('scroll', isSticky);
+   
+},[]);
   return (
     <>
       {/* Navbar */}
