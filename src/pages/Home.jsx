@@ -86,12 +86,12 @@ function Home() {
           </section>
         </>
       ) : (
-        ""
+        <div className="col-md-6 serach-div"><h2>No matching records found!  </h2></div>
       )}
       {showModal ? (
         <Modal addProduct={addProduct} onHide={() => setModal(false)} />
       ) : (
-      <div className="col-md-6 serach-div"><h2>No matching records found!  </h2></div>
+  ''
       )}
     </>
   );
